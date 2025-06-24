@@ -12,7 +12,7 @@ export const AdContact = () => {
         name: "",
         email: "",
         address: "",
-        phoneNumber: ""
+        phone: ""
     });
     const [error, setError] = useState("")
     console.log(contacto)
@@ -61,7 +61,7 @@ export const AdContact = () => {
             setError("Todos los camppos son obligatorios")
             return
         }
-        if (!contacto.phoneNumber.trim()) {
+        if (!contacto.phone.trim()) {
             setError("Todos los camppos son obligatorios")
             return
        }
@@ -72,7 +72,7 @@ export const AdContact = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     "name": contacto.name,
-                    "phone": contacto.phoneNumber,
+                    "phone": contacto.phone,
                     "email": contacto.email,
                     "address": contacto.address
                 })
@@ -112,8 +112,8 @@ export const AdContact = () => {
                         className="form-control"
                         id="formPhoneNumberInput"
                         placeholder="Escriba aqui su número de telefono"
-                        value={contacto.phoneNumber}
-                        onChange={(e) => setContacto({ ...contacto, phoneNumber: e.target.value })}
+                        value={contacto.phone}
+                        onChange={(e) => setContacto({ ...contacto, phone: e.target.value })}
                     ></input>
                 </div>
                 <div className="mb-3">

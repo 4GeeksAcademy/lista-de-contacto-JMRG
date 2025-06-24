@@ -2,6 +2,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import React, { useState, useEffect } from "react";
 import { Card } from "../components/Card"
 
+
 export const Home = () => {
 
 	const { store, dispatch } = useGlobalReducer()

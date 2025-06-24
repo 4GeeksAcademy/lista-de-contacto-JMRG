@@ -7,6 +7,7 @@ export const EditContact = (props) => {
     const { store, dispatch } = useGlobalReducer()
     const { Id } = useParams()
     const unContacto = store.contactos.find(Contact => Contact.id === parseInt(Id));
+
     
     let navigate = useNavigate();
     const [contactoEdit, setContactoEdit] = useState({
@@ -46,13 +47,14 @@ useEffect(()=>{
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     "name": contactoEdit.name,
-                    "phone": contactoEdit.phoneNumber,
+                    "phone": contactoEdit.phone,
                     "email": contactoEdit.email,
                     "address": contactoEdit.address
                 })
             })
-            setContactoEdit({});
             await getContacts();
+            setContactoEdit({});
+            
             navigate("/")
         } catch (error) {
             console.log('error 404:', error)
@@ -64,7 +66,6 @@ useEffect(()=>{
     useEffect(() => {
         getContacts()
     }, [])
-
     return (
         <div className="container">
             <form className="mb-3" onSubmit={(e) => { e.preventDefault(); putContacto() }}>
@@ -86,8 +87,8 @@ useEffect(()=>{
                         className="form-control"
                         id="formPhoneNumberInput"
                         placeholder="Escriba aqui su número de telefono"
-                        value={contactoEdit.phoneNumber}
-                        onChange={(e) => setContactoEdit({ ...contactoEdit, phoneNumber: e.target.value })}
+                        value={contactoEdit.phone}
+                        onChange={(e) => setContactoEdit({ ...contactoEdit, phone: e.target.value })}
                     ></input>
                 </div>
                 <div className="mb-3">
